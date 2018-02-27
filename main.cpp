@@ -92,5 +92,6 @@ int main() {
 	if (print) printBestSolutions(solutions);
 	else printAllSolutions(solutions);
 
-    return 0;
+	delete init;    
+	return 0;
 }
