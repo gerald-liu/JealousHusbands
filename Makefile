@@ -1,6 +1,6 @@
 # Definition of variables
-SRCS = main.cpp state.cpp
-OBJS = main.o state.o
+SRCS = main.cpp solver.cpp state.cpp
+OBJS = main.o solver.o state.o
 PROG = jh
 CC = g++
 CPPFLAGS = -std=c++11

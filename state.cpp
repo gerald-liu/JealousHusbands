@@ -1,4 +1,5 @@
-/*	File:	state.cpp
+/**	
+ *	File:	state.cpp
  *	Author: Gerald Liu
  *	Date: 	Feb 25, 2018
  */
@@ -8,24 +9,10 @@
 State::State(int h, int w, int b, int t, State* p) : husband{ h }, wife{ w }, boat{ b }, tripNum{ t }, prev{ p } {}
 
 State::~State() { 
-	if (!next.empty()) {
-		for (unsigned int i = 0; i < next.size(); i++) {
-			if (next[i] != nullptr) {
-				delete next[i];
-				next[i] = nullptr;
-			}
-		}
-	}
+	if (!next.empty()) for (unsigned int i = 0; i < next.size(); i++) if (next[i] != nullptr) delete next[i];
 }
 
-
-void State::print() const {
-	if (prev == nullptr) return;
-	else prev->print();
-
-    cout << tripNum << "\t< "  << husband << ", " << wife << ", " << boat << " >\n";
-}
-
+void State::print() const { cout << tripNum << "\t< "  << husband << ", " << wife << ", " << boat << " >\n"; }
 
 void State::store(vector<State*>& solution) {
 	if (prev == nullptr) return;
