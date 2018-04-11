@@ -1,10 +1,9 @@
 # Definition of variables
-SRCS = main.cpp solver.cpp state.cpp
-OBJS = main.o solver.o state.o
+SRCS = *.cpp
+OBJS = *.o
 PROG = jh
 CC = g++
 CPPFLAGS = -std=c++11
-LDFLAGS =
 DBGFLAGS = -g -Wall
 
 # Rules' Format
@@ -12,13 +11,14 @@ DBGFLAGS = -g -Wall
 # [TAB] COMMAND USED TO CREATE THE TARGET
 
 all: $(OBJS)
-	$(CC) $(LDFLAGS) -o $(PROG) $(OBJS)
+	$(CC) -o $(PROG) $(OBJS)
 
-.cpp.o:
-	$(CC) $(CPPFLAGS) -c $*.cpp
+*.o:
+	$(CC) $(CPPFLAGS) -c *.cpp
 
 # makedepend can find the .h dependencies automatically
-depend:;	makedepend $(SRCS)
+depend:
+	makedepend $(SRCS)
 
 clean:
-	rm -f core $(OBJS)
+	rm -f core $(OBJS) $(PROG)
